@@ -32,3 +32,16 @@ var mergeTwoLists = function(list1, list2) {
 //     처음에 new ListNode() 생성할 때 들어간 0을 제외하고 return 해야함
     return newList.next;
 };
+
+
+// 재귀함수 방법
+var mergeTwoLists = function(list1, list2) {
+    if(!list1 || !list2) return list1 || list2;
+    
+    if(list1.val < list2.val){
+        list1.next = mergeTwoLists(list1.next, list2);
+        return list1;
+    }
+    list2.next = mergeTwoLists(list1, list2.next);
+    return list2;
+};
